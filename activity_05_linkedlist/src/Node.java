@@ -10,8 +10,8 @@ public class Node {
     private Node next;
 
     public Node() {
-        data = 0;
-        next = null;
+        data = 0; // set to a default value
+        next = null; // does not refer to any particular node
     }
 
     public Node(int data) {
@@ -34,6 +34,13 @@ public class Node {
     public void setNext(Node next) {
         this.next = next;
     }
+    // Node a = new Node(5);
+    // Node b = new Node(8);
+    // a -> b
+    // a.setNext(b);
+    // which node comes after a?
+    // Node temp;
+    // temp = a.getNext();
 
     @Override
     public String toString() {
