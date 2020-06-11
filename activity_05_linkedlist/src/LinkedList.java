@@ -11,27 +11,15 @@ public class LinkedList {
     public LinkedList() {
         head = null;
     }
-    // LinkedList ll = new LinkedList();
-    // if (ll.isEmpty())
-    //    System.out.println("list is empty");
-    // else
-    //    System.out.println("list is NOT empty!");
 
-    // TODO: add in front
-    // [ 5, 8]
-    // head = Node(3)
-    // newNode = Node(3)
+    // TODOd: add in frontf
     public void add(int data) {
         Node newNode = new Node(data);
         newNode.setNext(head);
         head = newNode;
     }
 
-    // TODO: add at the tail
-    // list: [ 5, 8, 3 ]
-    // head = Node(5)
-    // current = Node(8)
-    // newNode = Node(3)
+    // TODOd: add at the tail
     public void append(int data) {
         Node newNode = new Node(data);
         if (isEmpty())
@@ -61,13 +49,7 @@ public class LinkedList {
         return head == null;
     }
 
-    // TODO: return the number of elements of the list
-    // hint: do NOT modify the head node!!!
-    // hint: instead, use a temp Node reference, name it "current"
-    // [ 5, 8, 3 ]
-    // head = Node(5)
-    // current = null
-    // count = 3
+    // TODOd: return the number of elements of the list
     public int size() {
         int count = 0;
         Node current = head;
@@ -78,19 +60,52 @@ public class LinkedList {
         return count;
     }
 
-    // TODO: return the element at the given index location (if index is invalid, just return 0)
-    public int get(int index) {
-        return 0;
+    // TODOd: return the element at the given index location (if index is invalid, just return 0 or throw an exception)
+    public int get(int index) throws IndexOutOfBoundsException {
+        if (index >= 0 && index < size()) {
+            Node current = head;
+            int i = 0;
+            while (i < index) {
+                current = current.getNext();
+                i++;
+            }
+            return current.getData();
+        }
+        throw new IndexOutOfBoundsException();
     }
 
-    // TODO: change the element at the given index location (if index is invalid, do nothing)
+    // TODOd: change the element at the given index location (if index is invalid, do nothing or throw an exception)
     public void set(int index, int data) {
-
+        if (index >= 0 && index < size()) {
+            Node current = head;
+            int i = 0;
+            while (i < index) {
+                current = current.getNext();
+                i++;
+            }
+            current.setData(data);
+        }
+        else
+            throw new IndexOutOfBoundsException();
     }
 
-    // TODO: insert the element at the given index location (if the index is invalid, do nothing)
+    // TODOd: insert the element at the given index location (if the index is invalid, do nothing)
     void insert(int index, int data) {
-
+        if (index > 0 && index < size()) {
+            Node newNode = new Node(data);
+            Node current = head;
+            int i = 0;
+            while (i < index - 1) {
+                current = current.getNext();
+                i++;
+            }
+            newNode.setNext(current.getNext());
+            current.setNext(newNode);
+        }
+        else if (index == 0)
+            add(data);
+        else
+            throw new IndexOutOfBoundsException();
     }
 
     // TODO: remove the element at the given index location (if the index is invalid, do nothing)
