@@ -46,7 +46,7 @@ public class Term {
         this.next = next;
     }
 
-    // TODO: add the given term's coefficient to the callee term's coefficient if and only if they have the same exponent value
+    // TODO: add the given term's coefficient to the callee term's coefficient if and only if they have the same exponent value.
     public void add(final Term other) {
 
     }
