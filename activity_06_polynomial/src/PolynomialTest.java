@@ -146,7 +146,7 @@ class PolynomialTest {
         p2.addTerm(new Term(4, 5));
         p2.addTerm(new Term(-2, 4));
         p2.addTerm(new Term(7, 1));
-        p1.add(p2);
+        p1.add(p2); // failing because we still need to implement add a polynomial to another...
         assertEquals(7, p1.size());
         assertEquals(6, p1.degree());
         assertEquals(new Term(7.5, 6), p1.getTerm(6));

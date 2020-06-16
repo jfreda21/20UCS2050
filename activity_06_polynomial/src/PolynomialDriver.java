@@ -23,6 +23,21 @@ public class PolynomialDriver {
 
     // TODO: see activity instructions for more information about what to do here
     public static void main(String[] args) {
+        //  8x^3
+        //  -2x^2
+        //  7x
+        //  3.2
+        Term t1, t2, t3, t4;
+        t1 = new Term(8, 3);
+        System.out.println(t1);
+        t2 = new Term(-2, 2);
+        System.out.println(t2);
+        t3 = new Term(7, 1);
+        System.out.println(t3);
+        t4 = new Term(3.2);
+        System.out.println(t4);
 
+        Term t4clone = (Term) t4.clone();
+        System.out.println(t4clone);
     }
 }

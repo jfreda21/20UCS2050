@@ -12,19 +12,59 @@ public class Polynomial {
         firstTerm = null;
     }
 
-    // TODO: return the maximum exponent value of the polynomial
+    // TODOd: return the maximum exponent value of the polynomial
     public int degree() {
-        return 0; // placeholder so the code compiles
+        if (firstTerm != null)
+            return firstTerm.getExponent();
+        return 0;
     }
 
-    // TODO: return the number of terms of the polynomial
+    // TODOd: return the number of terms of the polynomial
     public int size() {
-        return 0; // placeholder so the code compiles
+        Term current = firstTerm;
+        int count = 0;
+        while (current != null) {
+            count++;
+            current = current.getNext();
+        }
+        return count;
     }
 
     // TODO: add the given term to the polynomial (see activity instructions for more detailed information)
     void addTerm(final Term term) {
-
+        // 3x2 + 5 -> 8x3 + 3x2 + 5
+        // newTerm -> [8x3]
+        // firstTerm -> [3x2]
+        Term newTerm = (Term) term.clone();
+        // if the polynomial has zero terms, make the “new term” object the “first term”;
+        if (firstTerm == null)
+            firstTerm = newTerm;
+        else if (newTerm.getExponent() > firstTerm.getExponent()){
+            newTerm.setNext(firstTerm);
+            firstTerm = newTerm;
+        }
+        else {
+            Term previous = null;
+            Term current = firstTerm;
+            while (current != null) {
+                if (newTerm.getExponent() > current.getExponent()) {
+                    newTerm.setNext(current);
+                    previous.setNext(newTerm);
+                    return;
+                }
+                else if (newTerm.getExponent() == current.getExponent()) {
+                    current.add(newTerm);
+                    return;
+                }
+                else {
+                    previous = current;
+                    current = current.getNext();
+                }
+            }
+            // 3x4 + 2x2
+            // add 5x
+            previous.setNext(newTerm);
+        }
     }
 
     // TODO: add the terms of the given polynomial to the callee polynomial; hint: traverse the given polynomial and call addTerm to add each of its terms to the callee polynomial
@@ -39,8 +79,16 @@ public class Polynomial {
         return ""; // placeholder so the code compiles
     }
 
-    // TODO: return the term with the given exponent; null if the term does not exist
+    // TODOd: return the term with the given exponent; null if the term does not exist
     Term getTerm(int exponent) {
-        return null; // placeholder so the code compiles
+        Term current = firstTerm;
+        while (current != null) {
+            if (exponent > current.getExponent())
+                return null;
+            if (exponent ==  current.getExponent())
+                return current;
+            current = current.getNext();
+        }
+        return null;
     }
 }
