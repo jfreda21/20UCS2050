@@ -7,7 +7,7 @@
 public class StaticStackDriver {
 
     public static void main(String[] args) {
-        StaticStack stack = new StaticStack(5);
+        StaticStack stack = new StaticStack();
         System.out.println(stack);
         stack.push(5);
         System.out.println(stack);

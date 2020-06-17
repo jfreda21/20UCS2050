@@ -26,5 +26,9 @@ public class DynamicStackDriver {
         data = stack.pop();
         System.out.println(data + " was popped out from the stack!");
         System.out.println(stack);
+
+        for (int i = 0; i < 1000; i++)
+            stack.push(i);
+        System.out.println(stack);
     }
 }

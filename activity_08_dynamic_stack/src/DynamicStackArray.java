@@ -27,20 +27,37 @@ public class DynamicStackArray {
         size = 0;
     }
 
-    // TODO: push data onto the stack (if no space is available, increase the capacity of the stack by adding INCREMENT_CAPACITY)
+    // TODOd: push data onto the stack (if no space is available, increase the capacity of the stack by adding INCREMENT_SIZE)
     public void push(int value) {
-
+        if (size == capacity) {
+            capacity += INCREMENT_SIZE;
+            int newData[] = new int[capacity];
+            for (int i = 0; i < data.length; i++)
+                newData[i] = data[i];
+            data = newData;
+        }
+        this.data[size] = value;
+        size++;
     }
 
-    // TODO: peek just returns the element on top of the stack but does not remove it;
+    // TODOd: peek just returns the element on top of the stack but does not remove it;
     // if the stack is empty, return 0 or throw an exception
     public int peek() {
+        if (size > 0) {
+            int data = this.data[size - 1];
+            return data;
+        }
         return 0; // placeholder
     }
 
-    // TODO: pop returns the element on top of the stack, also removing it
+    // TODOd: pop returns the element on top of the stack, also removing it
     // if the stack is empty, return 0 or throw an exception
     public int pop() {
+        if (size > 0) {
+            int data = this.data[size - 1];
+            size--;
+            return data;
+        }
         return 0; // placeholder
     }
 
@@ -52,9 +69,9 @@ public class DynamicStackArray {
         return capacity;
     }
 
-    // TODO: implement isEmpty
+    // TODOd: implement isEmpty
     public boolean isEmpty() {
-        return false; // placeholder
+        return size == 0; // placeholder
     }
 
     @Override
