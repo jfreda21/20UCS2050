@@ -4,9 +4,9 @@
  * Description: Activity 10 - "generic" Node
  */
 
-public class Node<K> {
+public class Node<T> {
 
-    private K    data;
+    private T    data;
     private Node next;
 
     public Node() {
@@ -14,24 +14,24 @@ public class Node<K> {
         next = null;
     }
 
-    public Node(K data) {
+    public Node(T data) {
         this.data = data;
         next      = null;
     }
 
-    public K getData() {
+    public T getData() {
         return data;
     }
 
-    public Node<K> getNext() {
+    public Node<T> getNext() {
         return next;
     }
 
-    public void setData(K data) {
+    public void setData(T data) {
         this.data = data;
     }
 
-    public void setNext(Node<K> next) {
+    public void setNext(Node<T> next) {
         this.next = next;
     }
 
